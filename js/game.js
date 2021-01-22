@@ -1,13 +1,16 @@
 function Create() {
     this.gameMode = IDLE
 
-    generateGradientBackground()
+    //generateGradientBackground()
     
     addLeftWall("base", "top")
     
     addRightWall("base", "top")
     
     addSquare("LockSquare", 0.2)
+
+    
+
     
     updateLevel()
     
