@@ -1,7 +1,9 @@
 function Create() {
     this.gameMode = IDLE
 
-    //generateGradientBackground()
+    generateGradientBackground()
+
+    this.background=game.add.sprite(0, 0, "deadlightbg")
     
     addLeftWall("base", "top")
     
