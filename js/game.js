@@ -7,12 +7,12 @@ function Create() {
     
     addRightWall("base", "top")
     
-    addSquare("square", 0.2)
+    addSquare("LockSquare", 0.2)
     
     updateLevel()
     
     addLevelText("SCORE:", 60)
-    showInstructions("square", "drop here", "Tap and Hold to Grow the Square", "Release to Drop the Square")
+    showInstructions("LockSquare", "drop here", "Tap and Hold to Grow the Square", "Release to Drop the Square")
     this.bg = game.add.sprite(0, 0)
     this.bg.fixedToCamera = true
     this.bg.scale.setTo(game.width, game.height)

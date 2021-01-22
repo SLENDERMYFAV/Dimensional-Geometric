@@ -47,6 +47,7 @@ function scaleManager() {
 function loadAssets() {
     game.load.image("base", "assets/images/base.png")
     game.load.image("square", "assets/images/square.png")
+    game.load.image("LockSquare", "assets/images/LockSquare.png")
     game.load.image("top", "assets/images/top.png")
     game.load.image("gameover", "assets/images/gameover.png")
     game.load.bitmapFont("font", "assets/images/font.png", "assets/font/font.fnt")
