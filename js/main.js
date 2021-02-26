@@ -13,6 +13,7 @@ let wallWidth
 
 let GameState = {}
 let game
+let bestScore
 
 
 setUpCanvas()
@@ -187,27 +188,39 @@ function fallAndBounce(success) {
 }
 
 function addLevelText(text,textsize){
+    bestScore= localStorage.getItem("LockedBox") == null? 0: localStorage.getItem("LockedBox")
     this.levelText = game.add.bitmapText(game.width/2, 10, "font", `${text} ${saveScore}`, textsize)
-    this.levelText.anchor.setTo(0.5,0)
+    this.levelText.anchor.setTo(0.5, 0)
 
 }
 
 function gameOver() {
+    localStorage.setItem("LockedBox", Math.max(saveScore, bestScore))
     this.gameover = game.add.sprite(game.width / 2, game.height / 2, "gameover")
     this.gameover.anchor.setTo(0.5, 0.5)
     this.gameover.alpha = 0.7
     this.gameover.inputEnabled = true
     this.gameover.events.onInputDown.add(this.restartGame, this)
 
-    this.gameoverText = game.add.bitmapText(game.width / 2, game.height / 3, "font", "GAME OVER", 60)
+    this.gameoverText = game.add.bitmapText(game.width / 2, game.height / 3.5, "font", "GAME OVER", 60)
     this.gameoverText.anchor.setTo(0.5, 0.5)
 
-    this.restartText = game.add.bitmapText(game.width / 2, game.height / 2, "font", "TAP TO RESTART", 40)
+    this.restartText = game.add.bitmapText(game.width / 2, game.height / 2.5, "font", "TAP TO RESTART", 40)
     this.restartText.anchor.setTo(0.5, 0.5)
 
+    scoreText = game.add.bitmapText(game.width / 2, game.height / 2, "font", "", 40)
+    scoreText.anchor.setTo(0.5, 0.5)
+    scoreText.text= 'Score: '+saveScore
+
+    scoreBestText = game.add.bitmapText(game.width / 2, game.height / 1.5, "font", "", 40)
+    scoreBestText.anchor.setTo(0.5, 0.5)
+    scoreBestText.text= 'Best Score: '+localStorage.getItem("LockedBox")
+
     game.world.bringToTop(this.gameover)
+    game.world.bringToTop(this.scoreText)
     game.world.bringToTop(this.gameoverText)
     game.world.bringToTop(this.restartText)
+    game.world.bringToTop(this.scoreBestText)
 }
 
 function restartGame() {
